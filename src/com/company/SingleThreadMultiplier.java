@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by suspen on 13.12.16.
+ * Multiplier based on MapReduce approach which works in only thread.
  */
 public class SingleThreadMultiplier extends AbstractPartitioningMultiplier {
 
@@ -16,11 +16,14 @@ public class SingleThreadMultiplier extends AbstractPartitioningMultiplier {
         for (int i = 0; i < resultPartedHeight; ++i) {
             for (int j = 0; j < resultPartedWidth; ++j) {
                 for (int k = 0; k < partedRight.size(); ++k) {
-                    SquareMatrix res = partedLeft.get(i).get(k).multiply( partedRight.get(k).get(j) );
 
-                    //partedResult.get(i).set(j, partedResult.get(i).get(j).add(res) );
-
-                    partedResult.get(i).get(j).addMutable(res);
+                    SquareMatrix res = null;
+                    try {
+                        res = partedLeft.get(i).get(k).multiply( partedRight.get(k).get(j) );
+                        partedResult.get(i).get(j).addMutable(res);
+                    } catch (MatrixSizesMismatchException e) {
+                        // impossible, AbstractPartitioningMultiplier.createPartitions
+                    }
                 }
             }
         }

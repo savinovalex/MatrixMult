@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 /**
- * Created by suspen on 13.12.16.
+ * Double numbers
  */
 public class DoubleNumber extends AbstractNumber<Double> {
 

@@ -1,9 +1,12 @@
 package com.company;
 
 /**
- * Created by suspen on 04.12.16.
+ * Matrix Sizes Mismatch
  */
 public class MatrixSizesMismatchException extends Exception {
+
+
+    protected int leftHeight, leftWidth, rightHeight, rightWidth;
 
     public MatrixSizesMismatchException (int leftHeight, int leftWidth, int rightHeight, int rightWidth) {
         this.leftHeight = leftHeight;
@@ -12,5 +15,9 @@ public class MatrixSizesMismatchException extends Exception {
         this.rightWidth = rightWidth;
     }
 
-    int leftHeight, leftWidth, rightHeight, rightWidth;
+    public int getLeftHeight() { return leftHeight; }
+    public int getLeftWidth() { return leftWidth; }
+    public int getRightHeight() { return rightHeight; }
+    public int getRightWidth() { return rightWidth; }
+
 }

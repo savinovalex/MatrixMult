@@ -5,9 +5,13 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by suspen on 03.12.16.
+ * Matrix base class. Support for all basic matrix operation we required.
  */
 public class Matrix<T extends AbstractNumber> {
+
+
+    protected ArrayList<ArrayList<T>> matrix;
+    private T zero;
 
     public Matrix(int n, int m, T zero) {
         this.zero = zero;
@@ -166,6 +170,4 @@ public class Matrix<T extends AbstractNumber> {
 
     public T getZero() { return zero; }
 
-    protected ArrayList<ArrayList<T>> matrix;
-    private T zero;
 }

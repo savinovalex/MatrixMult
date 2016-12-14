@@ -1,9 +1,12 @@
 package com.company;
 
 /**
- * Created by suspen on 04.12.16.
+ * Matrix Not Square
  */
 public class MatrixNotSquareException extends Exception {
+
+
+    protected int height, width;
 
     MatrixNotSquareException( int actualHeight, int actualWidth ) {
         height = actualHeight;
@@ -13,5 +16,4 @@ public class MatrixNotSquareException extends Exception {
     int getActualHeight () { return height; }
     int getActualWidth () { return width; }
 
-    protected int height, width;
 }

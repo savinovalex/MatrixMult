@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 /**
- * Created by suspen on 13.12.16.
+ * Integer number with mutation. All operations affects to current instance.
  */
 class IntegerNumberMutable extends AbstractNumber<Integer> implements NumberMutable {
     IntegerNumberMutable () { val = 0; }

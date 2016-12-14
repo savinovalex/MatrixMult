@@ -16,16 +16,13 @@ public class Main {
         mtrx2.printFull();
         System.out.println();
 */
-        try {
-            mtrx3 = mtrx1.multiply(mtrx2);
-        } catch (MatrixSizesMismatchException e) {
-            e.printStackTrace();
-        }
+        SimpleMultiplier simpleMultiplier = new SimpleMultiplier();
+        mtrx3 = simpleMultiplier.multiply(mtrx1, mtrx2);
 
 //        mtrx3.printFull();
 //        System.out.println();
 
-        System.out.println("Calced raw");
+        System.out.println("Calced Simple");
 
 /*        SingleThreadMultiplier singleThreadMultiplier = new SingleThreadMultiplier(80);
         Matrix res = singleThreadMultiplier.multiply(mtrx1, mtrx2);
@@ -35,7 +32,9 @@ public class Main {
         ExecutorServiceMultiplier executorService = new ExecutorServiceMultiplier(16);
         Matrix res = executorService.multiply(mtrx1, mtrx2);
 
+        System.out.println("Calced MapReduce in " + executorService.getThreadsCount() + " threads");
+
         boolean eq = res.equalsTo(mtrx3);
-        System.out.println(eq);
+        System.out.println(eq ? "Correct" : "INCORRECT!");
     }
 }

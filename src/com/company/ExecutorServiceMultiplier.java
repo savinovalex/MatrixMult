@@ -3,15 +3,17 @@ package com.company;
 import java.util.concurrent.*;
 
 /**
- * Created by suspen on 14.12.16.
+ * Multiplier based on ExecutorService.
  */
 public class ExecutorServiceMultiplier extends AbstractPartitioningMultiplier {
+
+    private Phaser phaser;
+
+
 
     public ExecutorServiceMultiplier(int threadsCount) {
         super(threadsCount);
     }
-
-    private Phaser phaser;
 
     @Override
     public Matrix multiply(Matrix mtrx1, Matrix mtrx2) {

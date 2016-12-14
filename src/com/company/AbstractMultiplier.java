@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by suspen on 06.12.16.
+ * The most general abstraction for multiplier algorithm.
  */
 abstract public class AbstractMultiplier {
 

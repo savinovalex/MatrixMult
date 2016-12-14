@@ -3,7 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 /**
- * Created by suspen on 03.12.16.
+ * Special case for square matrices (N x N sizes). Used in MapReduce approach.
  */
 public class SquareMatrix<T extends AbstractNumber> extends Matrix {
 
@@ -18,35 +18,29 @@ public class SquareMatrix<T extends AbstractNumber> extends Matrix {
         super(n, n, zero);
     }
 
-    public SquareMatrix multiply(SquareMatrix mtrx) {
+    public SquareMatrix multiply(SquareMatrix mtrx) throws MatrixSizesMismatchException {
         try {
             SquareMatrix result = new SquareMatrix(super.multiply(mtrx), getZero());
             return result;
-        } catch (MatrixSizesMismatchException e) {
-        } catch (MatrixNotSquareException e) {
+        } catch (MatrixNotSquareException e) { // both are squares, impossible
         }
 
         return null;
     }
 
-    public SquareMatrix add(SquareMatrix mtrx) {
+    public SquareMatrix add(SquareMatrix mtrx) throws MatrixSizesMismatchException {
         try {
             SquareMatrix result = new SquareMatrix(super.add(mtrx), getZero());
             return result;
-        } catch (MatrixSizesMismatchException e) {
-            e.printStackTrace();
-        } catch (MatrixNotSquareException e) {
+        } catch (MatrixNotSquareException e) { // bot are squares, impossible
         }
 
         return null;
     }
 
-    public SquareMatrix addMutable(SquareMatrix mtrx) {
-        try {
-            super.addMutable(mtrx);
-        } catch (MatrixSizesMismatchException e) {
-            e.printStackTrace();
-        }
+    public SquareMatrix addMutable(SquareMatrix mtrx) throws MatrixSizesMismatchException {
+
+        super.addMutable(mtrx);
 
         return this;
     }

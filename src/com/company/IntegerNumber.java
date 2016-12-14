@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 /**
- * Created by suspen on 05.12.16.
+ * Integer numbers.
  */
 public class IntegerNumber extends AbstractNumber<Integer> {
 

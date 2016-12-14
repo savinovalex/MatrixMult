@@ -1,7 +1,7 @@
 package com.company;
 
 /**
- * Created by suspen on 06.12.16.
+ * The most simplest multiplier. Used for testing purposes.
  */
 public class SimpleMultiplier extends AbstractMultiplier {
 

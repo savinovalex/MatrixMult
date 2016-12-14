@@ -3,9 +3,11 @@ package com.company;
 import java.util.Random;
 
 /**
- * Created by suspen on 05.12.16.
+ * Abstraction for any number which could be the member of matrices.
  */
 abstract public class AbstractNumber<T extends Number> implements Cloneable {
+
+    protected T val;
 
     abstract public AbstractNumber add (AbstractNumber a);
     abstract public AbstractNumber multiply (AbstractNumber a);
@@ -27,6 +29,4 @@ abstract public class AbstractNumber<T extends Number> implements Cloneable {
     public String toString() {
         return val.toString();
     }
-
-    protected T val;
 }

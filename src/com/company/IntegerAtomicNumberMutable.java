@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Created by suspen on 13.12.16.
+ * AtomicInteger number with mutation. All operations affects to current instance.
  */
 public class IntegerAtomicNumberMutable<AtomicInteger> extends AbstractNumber {
     IntegerAtomicNumberMutable () { val = 0; }

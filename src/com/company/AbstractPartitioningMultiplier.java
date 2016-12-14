@@ -4,16 +4,30 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 /**
- * Created by suspen on 13.12.16.
+ * Abstraction for methods that would use MapReduce approach.
  */
 abstract public class AbstractPartitioningMultiplier extends AbstractMultiplier {
+
+
+    protected int threadsCount;
+    protected ArrayList<ArrayList<SquareMatrix>> partedLeft, partedRight, partedResult;
+    protected int resultPartedHeight, resultPartedWidth, squareSize;
+
 
     public AbstractPartitioningMultiplier (int threadsCount) {
         this.threadsCount = threadsCount;
     }
 
+    /**
+     * We need to split both matrices on square part of the same size and the same parts count for each dimension.
+     * Based on threadsCount we can calculate optimal size of square.
+     * The most right and the most bottom squares can be partially out of the borders of matrices. In this case
+     * out-of-range values filled with zeros.
+     *
+     * @param mtrx1
+     * @param mtrx2
+     */
     protected void createPartitions (Matrix mtrx1, Matrix mtrx2) {
-//        parts = new ArrayList<>();
 
         int sqrt = Math.round((float)Math.max(1.0, Math.sqrt((double)threadsCount)));
         squareSize = (mtrx1.width() - 1) / sqrt + 1;
@@ -32,6 +46,14 @@ abstract public class AbstractPartitioningMultiplier extends AbstractMultiplier 
         }
     }
 
+    /**
+     * After calculation in array partedResult we have multiplied matrix splitted on square parts.
+     * So we to concatenate all values that are not out of the borders.
+     * @param rows
+     * @param cols
+     * @param zero
+     * @return
+     */
     protected Matrix concatParts (int rows, int cols, AbstractNumber zero) {
         Matrix result = new Matrix(rows, cols, zero);
 
@@ -82,8 +104,6 @@ abstract public class AbstractPartitioningMultiplier extends AbstractMultiplier 
         private final int index;
     }
 
+    public int getThreadsCount () { return threadsCount; }
 
-    protected int threadsCount;
-    protected ArrayList<ArrayList<SquareMatrix>> partedLeft, partedRight, partedResult;
-    protected int resultPartedHeight, resultPartedWidth, squareSize;
 }
