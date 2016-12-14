@@ -5,4 +5,5 @@ package com.company;
  */
 public interface NumberMutable {
 
+
 }

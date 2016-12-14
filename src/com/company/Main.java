@@ -1,8 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-
 public class Main {
 
 
@@ -29,12 +26,19 @@ public class Main {
 */
 //        res.printFull();
 
-        ExecutorServiceMultiplier executorService = new ExecutorServiceMultiplier(16);
-        Matrix res = executorService.multiply(mtrx1, mtrx2);
+        MapReduceMultiplier mapReduceMultiplier = new MapReduceMultiplier(16);
+        Matrix res = mapReduceMultiplier.multiply(mtrx1, mtrx2);
 
-        System.out.println("Calced MapReduce in " + executorService.getThreadsCount() + " threads");
+        System.out.println("Calced MapReduce in " + mapReduceMultiplier.getThreadsCount() + " threads");
 
         boolean eq = res.equalsTo(mtrx3);
+        System.out.println(eq ? "Correct" : "INCORRECT!");
+
+        ImpatientMapReduceMultiplier impatientMapReduceMultiplier = new ImpatientMapReduceMultiplier(80);
+        Matrix res2 = impatientMapReduceMultiplier.multiply(mtrx1, mtrx2);
+
+        System.out.println("Calced ImpatientMapReduce in " + impatientMapReduceMultiplier.getThreadsCount() + " threads");
+        eq = res2.equalsTo(mtrx3);
         System.out.println(eq ? "Correct" : "INCORRECT!");
     }
 }

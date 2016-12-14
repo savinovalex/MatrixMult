@@ -6,4 +6,5 @@ package com.company;
 abstract public class AbstractMultiplier {
 
     abstract public Matrix multiply (Matrix mtrx1, Matrix mtrx2);
+
 }

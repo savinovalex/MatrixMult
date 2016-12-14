@@ -28,8 +28,6 @@ public class SingleThreadMultiplier extends AbstractPartitioningMultiplier {
             }
         }
 
-
-
         return concatParts(mtrx1.height(), mtrx2.width(), mtrx1.getZero());
     }
 }
